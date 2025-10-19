@@ -25,9 +25,28 @@ const {
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <script is:inline>
+      {`
+        (function() {
+          try {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var isDark = stored ? stored === 'dark' : prefersDark;
+            var root = document.documentElement;
+            if (isDark) {
+              root.classList.add('dark');
+            } else {
+              root.classList.remove('dark');
+            }
+          } catch (e) {
+            // ignore
+          }
+        })();
+      `}
+    </script>
   </head>
-  <body class='bg-slate-900 text-gray-100'>
-    <Navbar />
+  <body class='bg-white text-slate-900 dark:bg-slate-900 dark:text-gray-100'>
+    <Navbar client:only="react" />
 
     <slot></slot>
 
