@@ -5,6 +5,7 @@ import {
   NavMenuItem,
   Section,
 } from 'astro-boilerplate-components';
+import { ThemeToggle } from '@/partials/ThemeToggle';
 
 const Navbar = () => (
   <Section>
@@ -36,6 +37,7 @@ const Navbar = () => (
         <NavMenuItem href="/posts/">Blogs</NavMenuItem>
         <NavMenuItem href="/">GitHub</NavMenuItem>
         <NavMenuItem href="/">Twitter</NavMenuItem>
+        <ThemeToggle />
       </NavMenu>
     </NavbarTwoColumns>
   </Section>
